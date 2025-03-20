@@ -1,0 +1,4 @@
+name: HyperCore
+version: '0'
+main: io.github.seamo.hyperCore.HyperCore
+api-version: '1.21'
