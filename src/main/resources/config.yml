@@ -32,6 +32,10 @@ Zombie:
   attri-health: 100
   attri-damage: 6
 
+  #좀벌레의 기본 능력치
+  zom-he: 8
+  zom-da: 3
+
 Skeleton:
   #화살을 발사하는 간격
   skeleton-arrow-tick: 1

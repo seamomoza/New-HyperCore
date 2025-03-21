@@ -47,6 +47,12 @@ public class HyperZombie implements Listener {
             zombie.getAttribute(Attribute.MAX_HEALTH).setBaseValue(Health);
             zombie.heal(Health);
             zombie.getAttribute(Attribute.ATTACK_DAMAGE).setBaseValue(Damage);
+            Silverfish silverfish = (Silverfish) event.getEntity();
+            zombie.getAttribute(Attribute.KNOCKBACK_RESISTANCE).setBaseValue(1000000);
+            double da = config.getDouble("Zombie.zom-da");
+            double he = config.getDouble("Zombie.zom-he");
+            silverfish.getAttribute(Attribute.ATTACK_DAMAGE).setBaseValue(da);
+            silverfish.getAttribute(Attribute.MAX_HEALTH).setBaseValue(he);
         }
     }
 }
