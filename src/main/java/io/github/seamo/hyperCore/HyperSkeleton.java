@@ -1,13 +1,12 @@
 package io.github.seamo.hyperCore;
 
 import org.bukkit.Location;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.Arrow;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Skeleton;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.entity.EntityTargetEvent;
 import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.plugin.Plugin;
@@ -16,9 +15,11 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class HyperSkeleton implements Listener {
     private final double arrowTick;
+    private final double health;
 
     public HyperSkeleton(FileConfiguration config) {
         this.arrowTick = config.getDouble("Skeleton.skeleton-arrow-tick");
+        this.health = config.getDouble("Skeleton.attri-health");
     }
 
     @EventHandler
@@ -48,6 +49,13 @@ public class HyperSkeleton implements Listener {
     public void onSkeletonShoot(EntityShootBowEvent event) {
         if (event.getEntityType() == EntityType.SKELETON) {
             event.setCancelled(true);
+        }
+    }
+    @EventHandler
+    public void onSkeletonSpawn(EntitySpawnEvent event) {
+        if (event.getEntityType() == EntityType.SKELETON) {
+            Skeleton skeleton = (Skeleton) event.getEntity();
+            skeleton.getAttribute(Attribute.MAX_HEALTH).setBaseValue(health);
         }
     }
 }

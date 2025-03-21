@@ -28,9 +28,16 @@ Zombie:
   spawn-Silverfish: 1
   spawn-Chance: 100
 
+  #좀비의 기본 능력치
+  attri-health: 40
+  attri-damage: 5
+
 Skeleton:
   #화살을 발사하는 간격
   skeleton-arrow-tick: 1
+
+  #스켈레톤의 기본 능력치
+  attri-health: 50
 
 worldBorder:
   speed: 0.01
