@@ -35,7 +35,7 @@ public class HyperWorldBorder implements Listener {
                 for (Player player : players) {
                     WorldBorder worldBorder = player.getWorld().getWorldBorder();
                     Location playerLocation = player.getLocation();
-                    @NotNull Vector direction = playerLocation.getDirection().multiply(0.01);
+                    @NotNull Vector direction = playerLocation.getDirection().multiply(worldspeed);
                     Location newCenter = worldBorder.getCenter().add(direction);
 
                     worldBorder.setCenter(newCenter);
