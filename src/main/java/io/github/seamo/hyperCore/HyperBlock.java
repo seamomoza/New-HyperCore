@@ -1,7 +1,9 @@
+// src/main/java/io/github/seamo/hyperCore/HyperBlock.java
 package io.github.seamo.hyperCore;
 
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
@@ -12,21 +14,25 @@ import java.util.Random;
 
 public class HyperBlock implements Listener {
     private final Random random = new Random();
+    private final double lightningChance;
+    private final int tntFuseTicks;
+
+    public HyperBlock(FileConfiguration config) {
+        this.lightningChance = config.getDouble("block.lightning-chance");
+        this.tntFuseTicks = config.getInt("block.tnt-fuse-ticks");
+    }
 
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
-        if (random.nextDouble() < 0.1) { // 0.1% chance
+        if (random.nextDouble() < lightningChance) {
             Location location = event.getBlock().getLocation();
             World world = location.getWorld();
             event.setCancelled(true);
 
             if (world != null) {
-                // Strike lightning at the block's location
                 world.strikeLightning(location);
-
-                // Spawn TNT at the block's location
                 TNTPrimed tnt = (TNTPrimed) world.spawnEntity(location, EntityType.TNT);
-                tnt.setFuseTicks(80);
+                tnt.setFuseTicks(tntFuseTicks);
             }
         }
     }

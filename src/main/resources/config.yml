@@ -1,0 +1,33 @@
+entity-protection:
+  #좀비나 스켈레톤같은 불에 타는 몹을 보호할것인지
+  protect-zombie: true
+  protect-skeleton: true
+
+block:
+  #블럭 부술 시 번개가 칠 확률과 tnt의 폭발 시간
+  lightning-chance: 0.1
+  tnt-fuse-ticks: 80
+
+creeper:
+  #크리퍼의 폭발에 대한 세세한 config
+  explosion-radius-per-tick: 0.5
+  explosion-point-per-circum: 6.0
+  explosion-duration-ticks: 100
+  explosion-power: 4.0
+
+Weather:
+  lightning-chance: 0.1
+  damage-count: 2.0
+  damage-noDamageTicks: 20
+  damage-TickRate: 100
+  monster-TickRate: 200
+  monster-Type: ZOMBIE,SKELETON,CREEPER,SPIDER,ENDERMAN,CAVE_SPIDER,SILVERFISH,BLAZE,WITCH,SLIME,GHAST,MAGMA_CUBE,PHANTOM,DROWNED,HUSK,STRAY,WITHER_SKELETON,PILLAGER,VINDICATOR,EVOKER,VEX,RAVAGER,HOGLIN,PIGLIN_BRUTE,ZOMBIFIED_PIGLIN,ZOGLIN,GUARDIAN,ELDER_GUARDIAN,SHULKER,ENDERMITE,WARDEN
+
+Zombie:
+  #좀벌레를 소환하는 확률과 소환하는 갯수
+  spawn-Silverfish: 1
+  spawn-Chance: 100
+
+Skeleton:
+  #화살을 발사하는 간격
+  skeleton-arrow-tick: 1
