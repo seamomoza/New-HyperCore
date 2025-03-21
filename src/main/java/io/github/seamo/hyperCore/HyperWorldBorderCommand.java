@@ -15,19 +15,21 @@ public class HyperWorldBorderCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (args.length != 1) {
-            sender.sendMessage("Usage: /wb <player>");
+        if (!(sender instanceof Player)) {
+            sender.sendMessage("This command can only be used by players.");
             return false;
         }
 
-        Player player = Bukkit.getPlayer(args[0]);
-        if (player == null) {
-            sender.sendMessage("Player not found.");
-            return false;
-        }
-
+        Player player = (Player) sender;
         hyperWorldBorder.addPlayer(player);
-        sender.sendMessage("World border plugin applied to " + player.getName());
+
+        // Set the world border size to 10 and center it on the player
+        player.getWorld().getWorldBorder().setCenter(player.getLocation());
+        player.getWorld().getWorldBorder().setSize(10);
+
+        // Start the border movement
+        hyperWorldBorder.startBorderMovement();
+
         return true;
     }
 }
