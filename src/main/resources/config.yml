@@ -16,10 +16,10 @@ creeper:
   explosion-power: 4.0
 
 Weather:
-  lightning-chance: 0.1
-  damage-count: 2.0
-  damage-noDamageTicks: 20
-  damage-TickRate: 100
+  lightning-chance: 0.001
+  damage-count: 0.1
+  damage-noDamageTicks: 0
+  damage-TickRate: 1
   monster-TickRate: 200
   monster-Type: ZOMBIE,SKELETON,CREEPER,SPIDER,ENDERMAN,CAVE_SPIDER,SILVERFISH,BLAZE,WITCH,SLIME,GHAST,MAGMA_CUBE,PHANTOM,DROWNED,HUSK,STRAY,WITHER_SKELETON,PILLAGER,VINDICATOR,EVOKER,VEX,RAVAGER,HOGLIN,PIGLIN_BRUTE,ZOMBIFIED_PIGLIN,ZOGLIN,GUARDIAN,ELDER_GUARDIAN,SHULKER,ENDERMITE,WARDEN
 
@@ -31,3 +31,6 @@ Zombie:
 Skeleton:
   #화살을 발사하는 간격
   skeleton-arrow-tick: 1
+
+worldBorder:
+  speed: 0.01
