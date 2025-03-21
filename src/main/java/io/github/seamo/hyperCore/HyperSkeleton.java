@@ -56,6 +56,7 @@ public class HyperSkeleton implements Listener {
         if (event.getEntityType() == EntityType.SKELETON) {
             Skeleton skeleton = (Skeleton) event.getEntity();
             skeleton.getAttribute(Attribute.MAX_HEALTH).setBaseValue(health);
+            skeleton.heal(health);
         }
     }
 }

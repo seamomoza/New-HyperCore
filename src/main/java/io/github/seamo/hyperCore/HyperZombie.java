@@ -45,6 +45,7 @@ public class HyperZombie implements Listener {
             double Damage = config.getDouble("Zombie.attri-damage");
             Zombie zombie = (Zombie) event.getEntity();
             zombie.getAttribute(Attribute.MAX_HEALTH).setBaseValue(Health);
+            zombie.heal(Health);
             zombie.getAttribute(Attribute.ATTACK_DAMAGE).setBaseValue(Damage);
         }
     }
