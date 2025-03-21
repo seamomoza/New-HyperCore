@@ -33,7 +33,6 @@ public class HyperZombie implements Listener {
                 Location location = event.getEntity().getLocation();
                 for (int i = 0; i <= spawnCount; i++) {
                     Endermite endermite = (Endermite) location.getWorld().spawnEntity(location, EntityType.ENDERMITE);
-                    endermite.setTarget((LivingEntity) event.getDamager());
                 }
                 location.getWorld().spawnParticle(Particle.TOTEM_OF_UNDYING, location, 100);
                 location.getWorld().playSound(location, Sound.ENTITY_FIREWORK_ROCKET_BLAST, 1.0F, 1.0F);
