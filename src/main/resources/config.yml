@@ -25,7 +25,7 @@ Weather:
 
 Zombie:
   #좀벌레를 소환하는 확률과 소환하는 갯수
-  spawn-Silverfish: 1
+  spawn-EnderMite: 2
   spawn-Chance: 100
 
   #좀비의 기본 능력치
@@ -40,8 +40,11 @@ Skeleton:
   #화살을 발사하는 간격
   skeleton-arrow-tick: 1
 
+  #한번에 발사하는 화살의 갯수
+  skeleton-arrow-num: 10
+
   #스켈레톤의 기본 능력치
-  attri-health: 25
+  attri-health: 50
 
 worldBorder:
   speed: 0.01
