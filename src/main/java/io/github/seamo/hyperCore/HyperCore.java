@@ -20,5 +20,6 @@ public class HyperCore extends JavaPlugin {
 
         HyperWorldBorder worldBorder = new HyperWorldBorder(this, config);
         worldBorder.startBorderMovement();
+        getCommand("wb").setExecutor(new HyperWorldBorderCommand(worldBorder));
     }
 }
