@@ -12,8 +12,8 @@ public class HyperCore extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new HyperEntityProtection(), this);
         Bukkit.getPluginManager().registerEvents(new HyperBlock(), this);
         Bukkit.getPluginManager().registerEvents(new HyperPlayerListener(this), this);
-
-        // Set world border for all online players when the plugin is enabled
+        Bukkit.getPluginManager().registerEvents(new HyperWeather(this), this);
+        //하이퍼 월드보더 설정
         Bukkit.getOnlinePlayers().forEach(player -> new HyperWorldBorder(this).setWorldBorder(player));
     }
 }
