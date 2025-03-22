@@ -31,7 +31,7 @@ public class HyperZombie implements Listener {
             int spawnCount = config.getInt("Zombie.spawn-EnderMite");
             if (random.nextDouble() * 100 < spawnChance) {
                 Location location = event.getEntity().getLocation();
-                for (int i = 0; i <= spawnCount; i++) {
+                for (int i = 0; i < spawnCount; i++) {
                     Endermite endermite = (Endermite) location.getWorld().spawnEntity(location, EntityType.ENDERMITE);
                 }
                 location.getWorld().spawnParticle(Particle.TOTEM_OF_UNDYING, location, 100);
