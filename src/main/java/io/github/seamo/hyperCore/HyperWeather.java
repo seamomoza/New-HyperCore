@@ -9,6 +9,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.weather.WeatherChangeEvent;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -25,7 +26,7 @@ public class HyperWeather implements Listener {
     private final int noDamageTick;
     private final int damageTick;
     private final int monsterTick;
-    private final Set<EntityType> monsters;
+    private final double thunderTick;
     private final Random random = new Random();
 
     public HyperWeather(JavaPlugin plugin, FileConfiguration config) {
@@ -35,18 +36,7 @@ public class HyperWeather implements Listener {
         this.noDamageTick = config.getInt("Weather.damage-noDamageTicks");
         this.damageTick = config.getInt("Weather.damage-TickRate");
         this.monsterTick = config.getInt("Weather.monster-TickRate");
-        this.monsters = Stream.of(config.getString("Weather.monster-Type").split(","))
-                .map(String::trim)
-                .map(type -> {
-                    try {
-                        return EntityType.valueOf(type.toUpperCase());
-                    } catch (IllegalArgumentException e) {
-                        plugin.getLogger().severe("Invalid entity type: " + type);
-                        return null;
-                    }
-                })
-                .filter(entityType -> entityType != null)
-                .collect(Collectors.toCollection(() -> EnumSet.noneOf(EntityType.class)));
+        this.thunderTick = config.getDouble("weather.Thunder-TickRate");
     }
 
     @EventHandler
@@ -102,12 +92,11 @@ public class HyperWeather implements Listener {
 
                 for (Player player : world.getPlayers()) {
                     if (world.isThundering()) {
-                        EntityType randomMonster = getRandomMonster();
-                        world.spawnEntity(player.getLocation(), randomMonster);
+                        world.strikeLightning(player.getLocation());
                     }
                 }
             }
-        }.runTaskTimer(plugin, 0, monsterTick);
+        }.runTaskTimer((Plugin) plugin, 0L, (long) thunderTick);
     }
 
     private boolean isExposedToSky(Player player) {
@@ -117,10 +106,5 @@ public class HyperWeather implements Listener {
             }
         }
         return true;
-    }
-
-    private EntityType getRandomMonster() {
-        int index = random.nextInt(monsters.size());
-        return monsters.toArray(new EntityType[0])[index];
     }
 }
