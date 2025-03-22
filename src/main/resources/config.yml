@@ -20,7 +20,7 @@ Weather:
   damage-count: 0.1
   damage-noDamageTicks: 0
   damage-TickRate: 1
-  Thunder-TickRate: 200
+  Thunder-TickRate: 20
 
 Zombie:
   #좀벌레를 소환하는 확률과 소환하는 갯수

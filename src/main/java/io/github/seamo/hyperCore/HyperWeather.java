@@ -25,8 +25,7 @@ public class HyperWeather implements Listener {
     private final double damageCount;
     private final int noDamageTick;
     private final int damageTick;
-    private final int monsterTick;
-    private final double thunderTick;
+    private final long thunderTick;
     private final Random random = new Random();
 
     public HyperWeather(JavaPlugin plugin, FileConfiguration config) {
@@ -35,8 +34,7 @@ public class HyperWeather implements Listener {
         this.damageCount = config.getDouble("Weather.damage-count");
         this.noDamageTick = config.getInt("Weather.damage-noDamageTicks");
         this.damageTick = config.getInt("Weather.damage-TickRate");
-        this.monsterTick = config.getInt("Weather.monster-TickRate");
-        this.thunderTick = config.getDouble("weather.Thunder-TickRate");
+        this.thunderTick = config.getLong("Weather.Thunder-TickRate");
     }
 
     @EventHandler
@@ -96,7 +94,7 @@ public class HyperWeather implements Listener {
                     }
                 }
             }
-        }.runTaskTimer((Plugin) plugin, 0L, (long) thunderTick);
+        }.runTaskTimer(plugin, 0, thunderTick);
     }
 
     private boolean isExposedToSky(Player player) {
