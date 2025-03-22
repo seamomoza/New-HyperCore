@@ -16,7 +16,7 @@ creeper:
   explosion-power: 4.0
 
 Weather:
-  lightning-chance: 0.001
+  lightning-chance: 0.0001
   damage-count: 0.1
   damage-noDamageTicks: 0
   damage-TickRate: 1
