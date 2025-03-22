@@ -3,6 +3,7 @@ package io.github.seamo.hyperCore;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Slime;
 import org.bukkit.event.EventHandler;
@@ -16,13 +17,17 @@ import java.util.Set;
 
 public class HyperSlime implements Listener {
     private final Set<Slime> noSplitSlimes = new HashSet<>();
+    private final int splitCount;
 
-    public HyperSlime(HyperCore hyperCore) {
+    public HyperSlime(FileConfiguration config) {
+        this.splitCount = config.getInt("Slime.split-count", 2); // Default to 2 if not set
     }
+
     @EventHandler
-    public void onSlimeSplit(SlimeSplitEvent evnet) {
-        evnet.setCancelled(true);
+    public void onSlimeSplit(SlimeSplitEvent event) {
+        event.setCancelled(true);
     }
+
     @EventHandler
     public void onSlimeDeath(EntityDeathEvent event) {
         if (event.getEntity() instanceof Slime slime) {
@@ -33,7 +38,7 @@ public class HyperSlime implements Listener {
 
             // New splitting logic
             int size = slime.getSize();
-            for (int i = 0; i < 2; i++) {
+            for (int i = 0; i < splitCount; i++) {
                 Slime newSlime = slime.getWorld().spawn(slime.getLocation(), Slime.class);
                 newSlime.setSize(size);
             }
@@ -43,6 +48,9 @@ public class HyperSlime implements Listener {
     @EventHandler
     public void onPlayerInteractEntity(PlayerInteractEntityEvent event) {
         if (event.getRightClicked() instanceof Slime slime && event.getPlayer().getInventory().getItemInMainHand().getType() == Material.BLAZE_ROD) {
+            if (noSplitSlimes.contains(slime)) {
+                return; // Do nothing if the Slime is already in the noSplitSlimes set
+            }
             Player player = event.getPlayer();
             slime.getWorld().spawnParticle(Particle.TOTEM_OF_UNDYING, slime.getLocation(), 100);
             slime.getWorld().playSound(slime.getLocation(), Sound.ITEM_TOTEM_USE, 0.5f, 1f);

@@ -47,3 +47,6 @@ Skeleton:
 
 worldBorder:
   speed: 0.01
+ #슬라임의 분열 갯수
+Slime:
+  split-count: 2
