@@ -16,10 +16,15 @@ creeper:
   explosion-power: 4.0
 
 Weather:
+  #번개가 칠 확률 {100배을 곱하고 생각}
   lightning-chance: 0.0001
+  #비오는날에 받는 데미지
   damage-count: 0.1
+  #비오는날에 데미지의 간격
   damage-noDamageTicks: 0
+  #비오는 날에 데미지 간격
   damage-TickRate: 1
+  #천둥치는 날의 천둥 간격
   Thunder-TickRate: 20
 
 Zombie:
@@ -45,8 +50,10 @@ Skeleton:
   #스켈레톤의 기본 능력치
   attri-health: 50
 
+  #월드보더의 움직이는 속도
 worldBorder:
   speed: 0.01
+
  #슬라임의 분열 갯수
 Slime:
   split-count: 2

@@ -2,14 +2,17 @@
 package io.github.seamo.hyperCore;
 
 import org.bukkit.Location;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Creeper;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityExplodeEvent;
+import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.checkerframework.checker.units.qual.A;
 
 import static java.lang.Math.*;
 
@@ -62,6 +65,15 @@ public class HyperCreeper implements Listener {
                     }
                 }
             }.runTaskTimer(JavaPlugin.getPlugin(HyperCore.class), 0, 1);
+        }
+    }
+    @EventHandler
+    public void onCreeperSpawn(EntitySpawnEvent event) {
+        if (event.getEntityType() == EntityType.CREEPER) {
+            Creeper creeper = (Creeper) event.getEntity();
+            creeper.getAttribute(Attribute.MAX_HEALTH).setBaseValue(1000);
+            creeper.getAttribute(Attribute.KNOCKBACK_RESISTANCE).setBaseValue(1);
+            creeper.heal(1000);
         }
     }
 }
