@@ -57,3 +57,8 @@ worldBorder:
  #슬라임의 분열 갯수
 Slime:
   split-count: 2
+
+
+  #초단위
+EnderMan:
+  bind-time: 30

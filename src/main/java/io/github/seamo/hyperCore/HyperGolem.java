@@ -26,7 +26,7 @@ public class HyperGolem implements Listener {
             zombie.setHealth(200);
             zombie.setNoDamageTicks(0);
             zombie.getAttribute(Attribute.ATTACK_DAMAGE).setBaseValue(10);
-            zombie.getAttribute(Attribute.KNOCKBACK_RESISTANCE).setBaseValue(1.0); // Set knockback resistance to 1.0 (100%)
+            zombie.getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue(1.0); // Set knockback resistance to 1.0 (100%)
         }
     }
 }

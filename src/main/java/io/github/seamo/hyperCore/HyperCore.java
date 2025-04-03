@@ -19,6 +19,7 @@ public class HyperCore extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new HyperPlayerRespawn(this), this);
         Bukkit.getPluginManager().registerEvents(new HyperSlime(config), this);
         Bukkit.getPluginManager().registerEvents(new HyperGolem(), this);
+        Bukkit.getPluginManager().registerEvents(new HyperEnderman(), this);
 
         HyperWorldBorder worldBorder = new HyperWorldBorder(this, config);
         worldBorder.startBorderMovement();
