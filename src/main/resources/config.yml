@@ -58,6 +58,9 @@ worldBorder:
 Slime:
   split-count: 2
 
+  #초단위
+Evoker:
+  heal-time: 30
 
   #초단위
 EnderMan:
