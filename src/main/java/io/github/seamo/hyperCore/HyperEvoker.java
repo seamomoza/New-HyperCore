@@ -38,7 +38,7 @@ public class HyperEvoker implements Listener {
     }
     public void totem(Evoker evoker) {
         World world = evoker.getWorld();
-        world.playSound(evoker.getLocation(), Sound.ITEM_TOTEM_USE, 1f, 1f);
+        world.playSound(evoker.getLocation(), Sound.ITEM_TOTEM_USE, 0.5f, 1f);
 
         new BukkitRunnable() {
             int count = 0;

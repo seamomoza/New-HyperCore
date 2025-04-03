@@ -52,8 +52,8 @@ public class HyperSlime implements Listener {
                 return; // Do nothing if the Slime is already in the noSplitSlimes set
             }
             Player player = event.getPlayer();
-            slime.getWorld().spawnParticle(Particle.TOTEM_OF_UNDYING, slime.getLocation(), 100);
-            slime.getWorld().playSound(slime.getLocation(), Sound.ITEM_TOTEM_USE, 0.5f, 1f);
+            slime.getWorld().spawnParticle(Particle.FIREWORK, slime.getLocation(), 100,0.1,0.1,0.1);
+            slime.getWorld().playSound(slime.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_BLAST, 1.5f, 1f);
             noSplitSlimes.add(slime);
             player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1); // Remove one Blaze Rod from the player's inventory
         }
