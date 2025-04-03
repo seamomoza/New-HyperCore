@@ -29,6 +29,7 @@ public class HyperEnderman implements Listener {
             LivingEntity targetEntity = (LivingEntity) target;
             targetEntity.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, bindtime * 20, 10, false, false));
             targetEntity.addPotionEffect(new PotionEffect(PotionEffectType.JUMP_BOOST, bindtime * 20, 250, false, false));
+            targetEntity.addPotionEffect(new PotionEffect(PotionEffectType.DARKNESS, bindtime * 20, 250, false, false));
         }
     }
 }
