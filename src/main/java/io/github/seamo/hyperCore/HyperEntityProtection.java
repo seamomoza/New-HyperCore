@@ -1,4 +1,4 @@
-// src/main/java/io/github/seamo/hyperCore/HyperEntityProtection.java
+
 package io.github.seamo.hyperCore;
 
 import org.bukkit.configuration.file.FileConfiguration;
@@ -18,9 +18,12 @@ public class HyperEntityProtection implements Listener {
 
     @EventHandler
     public void onEntityCombust(EntityCombustEvent event) {
-        if ((protectZombie && event.getEntityType() == EntityType.ZOMBIE) ||
-                (protectSkeleton && event.getEntityType() == EntityType.SKELETON)) {
-            event.setCancelled(true);
+        if ((protectZombie && event.getEntityType() == EntityType.ZOMBIE)) {
+            event.setCancelled(protectZombie);
+        }
+        if ((protectSkeleton && event.getEntityType() == EntityType.SKELETON)) {
+            event.setCancelled(protectSkeleton);
+
         }
     }
 }

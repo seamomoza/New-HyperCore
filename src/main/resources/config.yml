@@ -1,6 +1,6 @@
 entity-protection:
   #좀비나 스켈레톤같은 불에 타는 몹을 보호할것인지
-  protect-zombie: true
+  protect-zombie: false
   protect-skeleton: true
 
 block:
@@ -28,17 +28,9 @@ Weather:
   Thunder-TickRate: 20
 
 Zombie:
-  #엔더마이트를 소환하는 확률과 소환하는 갯수
-  spawn-EnderMite: 2
-  spawn-Chance: 100
-
   #좀비의 기본 능력치
   attri-health: 100
   attri-damage: 6
-
-  #엔더마이트의 기본 능력치
-  zom-he: 8
-  zom-da: 3
 
 Skeleton:
   #화살을 발사하는 간격
