@@ -5,47 +5,28 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.io.IOException;
 
 public class ConfigManager {
-    /**
-     * This class is used to manage configuration files in a Bukkit plugin.
-     * It handles the creation, loading, saving, and reloading of YAML configuration files.
-     */
     private final JavaPlugin plugin;
-    private final String fileName;
-    private File file;
+    private final String configFileName;
     private FileConfiguration config;
 
-    public ConfigManager(JavaPlugin plugin, String fileName) {
+    public ConfigManager(JavaPlugin plugin, String configFileName) {
         this.plugin = plugin;
-        this.fileName = fileName.endsWith(".yml") ? fileName : fileName + ".yml";
-        createAndLoad();
+        this.configFileName = configFileName;
+        loadConfig();
     }
 
-    private void createAndLoad() {
-        file = new File(plugin.getDataFolder(), "configs" + File.separator + fileName);
-        if (!file.exists()) {
-            file.getParentFile().mkdirs();
-            plugin.saveResource("configs/" + fileName, false);
+    private void loadConfig() {
+        File configFile = new File(plugin.getDataFolder(), "configs/" + configFileName);
+        if (!configFile.exists()) {
+            configFile.getParentFile().mkdirs();
+            plugin.saveResource("configs/" + configFileName, false);
         }
-        config = YamlConfiguration.loadConfiguration(file);
+        config = YamlConfiguration.loadConfiguration(configFile);
     }
 
     public FileConfiguration getConfig() {
         return config;
     }
-
-    public void saveConfig() {
-        try {
-            config.save(file);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void reloadConfig() {
-        config = YamlConfiguration.loadConfiguration(file);
-    }
 }
-

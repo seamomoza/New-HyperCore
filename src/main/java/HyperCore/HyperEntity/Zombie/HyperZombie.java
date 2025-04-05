@@ -1,5 +1,6 @@
 package HyperCore.HyperEntity.Zombie;
 
+import HyperCore.Loader.ConfigLoader.ConfigManager;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.EntityType;
@@ -7,23 +8,26 @@ import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntitySpawnEvent;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Random;
 
 public class HyperZombie implements Listener {
-    private final FileConfiguration config;
     private final Random random = new Random();
+    private final double health;
+    private final double damage;
 
-    public HyperZombie(FileConfiguration config) {
-        this.config = config;
+    public HyperZombie(JavaPlugin plugin) {
+        ConfigManager configManager = new ConfigManager(plugin, "Zombie.yml");
+        FileConfiguration config = configManager.getConfig();
+        this.health = config.getDouble("attri-health");
+        this.damage = config.getDouble("attri-damage");
     }
 
 
     @EventHandler
     public void onZombieSpawn(EntitySpawnEvent event) {
         if (event.getEntityType() == EntityType.ZOMBIE) {
-            double health = config.getDouble("Zombie.attri-health");
-            double damage = config.getDouble("Zombie.attri-damage");
             Zombie zombie = (Zombie) event.getEntity();
             zombie.getAttribute(Attribute.MAX_HEALTH).setBaseValue(health);
             zombie.setHealth(health);

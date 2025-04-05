@@ -1,3 +1,3 @@
 #불에 탈것인지 아닌지
-protect-zombie: false
+protect-zombie: true
 protect-skeleton: true

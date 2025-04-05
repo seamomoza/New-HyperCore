@@ -1,2 +1,4 @@
 #죽고 회복하는 시간
 heal-time: 30
+#부활하는 확률
+revive-chance: 99

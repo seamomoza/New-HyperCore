@@ -1,5 +1,7 @@
 package HyperCore.Weather;
 
+import HyperCore.Loader.ConfigLoader.ConfigManager;
+import HyperCore.Loader.HyperCoreLoader.HyperCore;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -14,7 +16,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.util.Random;
 
 public class HyperWeather implements Listener {
-    private final JavaPlugin plugin;
+
     private final double lightningChance;
     private final double damageCount;
     private final int noDamageTick;
@@ -22,13 +24,14 @@ public class HyperWeather implements Listener {
     private final long thunderTick;
     private final Random random = new Random();
 
-    public HyperWeather(JavaPlugin plugin, FileConfiguration config) {
-        this.plugin = plugin;
-        this.lightningChance = config.getDouble("Weather.lightning-chance");
-        this.damageCount = config.getDouble("Weather.damage-count");
-        this.noDamageTick = config.getInt("Weather.damage-noDamageTicks");
-        this.damageTick = config.getInt("Weather.damage-TickRate");
-        this.thunderTick = config.getLong("Weather.Thunder-TickRate");
+    public HyperWeather(JavaPlugin plugin) {
+        ConfigManager configManager = new ConfigManager(plugin, "Weather.yml");
+        FileConfiguration config = configManager.getConfig();
+        this.lightningChance = config.getDouble("lightning-chance");
+        this.damageCount = config.getDouble("damage-count");
+        this.noDamageTick = config.getInt("damage-noDamageTicks");
+        this.damageTick = config.getInt("damage-TickRate");
+        this.thunderTick = config.getLong("Thunder-TickRate");
     }
 
     @EventHandler
@@ -70,7 +73,7 @@ public class HyperWeather implements Listener {
                     }
                 }
             }
-        }.runTaskTimer(plugin, 0, damageTick);
+        }.runTaskTimer(JavaPlugin.getPlugin(HyperCore.class), 0, damageTick);
     }
 
     private void startMonsterSpawnTask(World world) {
@@ -88,7 +91,7 @@ public class HyperWeather implements Listener {
                     }
                 }
             }
-        }.runTaskTimer(plugin, 0, thunderTick);
+        }.runTaskTimer(JavaPlugin.getPlugin(HyperCore.class), 0, thunderTick);
     }
 
     private boolean isExposedToSky(Player player) {

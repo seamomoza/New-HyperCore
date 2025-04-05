@@ -1,5 +1,7 @@
 package HyperCore.HyperEntity.Evoker;
 
+import HyperCore.Loader.ConfigLoader.ConfigManager;
+import HyperCore.Loader.HyperCoreLoader.HyperCore;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.World;
@@ -18,12 +20,14 @@ import java.util.Random;
 
 public class HyperEvoker implements Listener {
     private int healtime;
-    private JavaPlugin plugin;
     private final Random random = new Random();
+    private int reviveTime;
 
-    public HyperEvoker(JavaPlugin plugin, FileConfiguration config) {
-        this.healtime = config.getInt("Evoker.heal-time");
-        this.plugin = plugin;
+    public HyperEvoker(JavaPlugin plugin) {
+        ConfigManager configManager = new ConfigManager(plugin, "Evoker.yml");
+        FileConfiguration config = configManager.getConfig();
+        this.healtime = config.getInt("heal-time");
+        this.reviveTime = config.getInt("revive-chance");
     }
 
 
@@ -31,7 +35,7 @@ public class HyperEvoker implements Listener {
     public void onEvoker(EntityDeathEvent event) {
         if (event.getEntityType() == EntityType.EVOKER) {
             Evoker evoker = (Evoker) event.getEntity();
-            if (random.nextInt(100) <= 90) {
+            if (random.nextInt(100) <= reviveTime) {
 
 
                 event.setCancelled(true);
@@ -61,6 +65,6 @@ public class HyperEvoker implements Listener {
                 world.spawnParticle(Particle.TOTEM_OF_UNDYING, evoker.getLocation(), 25);
                 count++;
             }
-        }.runTaskTimer(plugin, 0L, 1L); // 0틱 시작, 1틱 간격
+        }.runTaskTimer(JavaPlugin.getPlugin(HyperCore.class), 0L, 1L); // 0틱 시작, 1틱 간격
     }
 }

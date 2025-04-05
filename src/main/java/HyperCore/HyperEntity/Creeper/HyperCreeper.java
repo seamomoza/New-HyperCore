@@ -1,5 +1,6 @@
 package HyperCore.HyperEntity.Creeper;
 
+import HyperCore.Loader.ConfigLoader.ConfigManager;
 import HyperCore.Loader.HyperCoreLoader.HyperCore;
 import org.bukkit.Location;
 import org.bukkit.attribute.Attribute;
@@ -24,13 +25,15 @@ public class HyperCreeper implements Listener {
     private int explosionTicks = 0;
     private Location explosionLocation = null;
 
-    public HyperCreeper(FileConfiguration config) {
-        this.explosionRadiusPerTick = config.getDouble("creeper.explosion-radius-per-tick");
-        this.explosionPointPerCircum = config.getDouble("creeper.explosion-point-per-circum");
-        this.explosionDurationTicks = config.getInt("creeper.explosion-duration-ticks");
-        this.explosionPower = (float) config.getDouble("creeper.explosion-power");
-    }
+    public HyperCreeper(JavaPlugin plugin) {
+        ConfigManager configManager = new ConfigManager(plugin, "Creeper.yml");
+        FileConfiguration config = configManager.getConfig();
 
+        this.explosionRadiusPerTick = config.getDouble("explosion-radius-per-tick");
+        this.explosionPointPerCircum = config.getDouble("explosion-point-per-circum");
+        this.explosionDurationTicks = config.getInt("explosion-duration-ticks");
+        this.explosionPower = (float) config.getDouble("explosion-power");
+    }
     @EventHandler
     public void onCreeperExplode(EntityExplodeEvent event) {
         if (event.getEntityType() == EntityType.CREEPER) {

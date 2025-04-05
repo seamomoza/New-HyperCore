@@ -1,5 +1,6 @@
 package HyperCore.HyperEntity.Slime;
 
+import HyperCore.Loader.ConfigLoader.ConfigManager;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
@@ -11,6 +12,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.SlimeSplitEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -19,8 +21,10 @@ public class HyperSlime implements Listener {
     private final Set<Slime> noSplitSlimes = new HashSet<>();
     private final int splitCount;
 
-    public HyperSlime(FileConfiguration config) {
-        this.splitCount = config.getInt("Slime.split-count", 2); // Default to 2 if not set
+    public HyperSlime(JavaPlugin plugin) {
+        ConfigManager configManager = new ConfigManager(plugin, "Slime.yml");
+        FileConfiguration config = configManager.getConfig();
+        this.splitCount = config.getInt("split-count", 2); // Default to 2 if not set
     }
 
     @EventHandler

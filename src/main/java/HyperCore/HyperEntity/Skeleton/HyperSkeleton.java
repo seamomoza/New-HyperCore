@@ -1,5 +1,6 @@
 package HyperCore.HyperEntity.Skeleton;
 
+import HyperCore.Loader.ConfigLoader.ConfigManager;
 import HyperCore.Loader.HyperCoreLoader.HyperCore;
 import org.bukkit.Location;
 import org.bukkit.attribute.Attribute;
@@ -19,13 +20,13 @@ public class HyperSkeleton implements Listener {
     private final double arrowTick;
     private final double health;
     private final int arrowNum;
-    private final JavaPlugin plugin;
 
-    public HyperSkeleton(JavaPlugin plugin,FileConfiguration config) {
-        this.arrowTick = config.getDouble("Skeleton.skeleton-arrow-tick");
-        this.health = config.getDouble("Skeleton.attri-health");
-        this.arrowNum = config.getInt("Skeleton.skeleton-arrow-num");
-        this.plugin = plugin;
+    public HyperSkeleton(JavaPlugin plugin) {
+        ConfigManager configManager = new ConfigManager(plugin, "Skeleton.yml");
+        FileConfiguration config = configManager.getConfig();
+        this.arrowTick = config.getDouble("skeleton-arrow-tick");
+        this.health = config.getDouble("attri-health");
+        this.arrowNum = config.getInt("skeleton-arrow-num");
     }
 
     @EventHandler
@@ -98,7 +99,7 @@ public class HyperSkeleton implements Listener {
 
                 ticks += 1;
             }
-        }.runTaskTimer(plugin, 0L, 1L); // 5틱마다 발사 (0.25초 간격)
+        }.runTaskTimer(JavaPlugin.getPlugin(HyperCore.class), 0L, 1L); // 5틱마다 발사 (0.25초 간격)
     }
 
     @EventHandler

@@ -21,18 +21,17 @@ public class HyperCore extends JavaPlugin {
     public void onEnable() {
         FileConfiguration config = getConfig();
 
-        Bukkit.getPluginManager().registerEvents(new HyperEntityProtection(config), this);
-        Bukkit.getPluginManager().registerEvents(new HyperCreeper(config), this);
-        Bukkit.getPluginManager().registerEvents(new HyperSkeleton(this, config), this);
-        Bukkit.getPluginManager().registerEvents(new HyperZombie(config), this);
-        Bukkit.getPluginManager().registerEvents(new HyperWeather(this, config), this);
+        Bukkit.getPluginManager().registerEvents(new HyperEntityProtection(this), this);
+        Bukkit.getPluginManager().registerEvents(new HyperCreeper(this), this);
+        Bukkit.getPluginManager().registerEvents(new HyperSkeleton(this), this);
+        Bukkit.getPluginManager().registerEvents(new HyperZombie(this), this);
+        Bukkit.getPluginManager().registerEvents(new HyperWeather(this), this);
         Bukkit.getPluginManager().registerEvents(new HyperPlayerRespawn(this), this);
-        Bukkit.getPluginManager().registerEvents(new HyperSlime(config), this);
+        Bukkit.getPluginManager().registerEvents(new HyperSlime(this), this);
         Bukkit.getPluginManager().registerEvents(new HyperGolem(), this);
-        Bukkit.getPluginManager().registerEvents(new HyperEnderMan(this, config), this);
-        Bukkit.getPluginManager().registerEvents(new HyperEvoker(this, config), this);
-
-        HyperWorldBorder worldBorder = new HyperWorldBorder(this, config);
+        Bukkit.getPluginManager().registerEvents(new HyperEnderMan(this), this);
+        Bukkit.getPluginManager().registerEvents(new HyperEvoker(this), this);
+        HyperWorldBorder worldBorder = new HyperWorldBorder(this);
         worldBorder.startBorderMovement();
         getCommand("wb").setExecutor(new HyperWorldBorderCommand(worldBorder));
     }
