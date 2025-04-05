@@ -1,0 +1,6 @@
+#플레이어의 드랍량을 설정
+random: true
+#랜덤이 true라면 min ~ max까지 랜덤이 false라면 min만
+min: 1
+max: 10
+break-cancel-chance: 25
