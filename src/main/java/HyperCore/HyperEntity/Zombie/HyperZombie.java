@@ -1,4 +1,4 @@
-package io.github.seamo.hyperCore;
+package HyperCore.HyperEntity.Zombie;
 
 import org.bukkit.attribute.Attribute;
 import org.bukkit.configuration.file.FileConfiguration;

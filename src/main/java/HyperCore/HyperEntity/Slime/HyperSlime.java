@@ -1,4 +1,4 @@
-package io.github.seamo.hyperCore;
+package HyperCore.HyperEntity.Slime;
 
 import org.bukkit.Material;
 import org.bukkit.Particle;

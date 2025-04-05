@@ -1,4 +1,4 @@
-package io.github.seamo.hyperCore;
+package HyperCore.Loader.WorldBorderLoader;
 
 import org.bukkit.Location;
 import org.bukkit.WorldBorder;

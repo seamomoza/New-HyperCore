@@ -1,6 +1,6 @@
-// src/main/java/io/github/seamo/hyperCore/HyperCreeper.java
-package io.github.seamo.hyperCore;
+package HyperCore.HyperEntity.Creeper;
 
+import HyperCore.Loader.HyperCoreLoader.HyperCore;
 import org.bukkit.Location;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -10,10 +10,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.entity.EntitySpawnEvent;
-import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.checkerframework.checker.units.qual.A;
 
 import static java.lang.Math.*;
 

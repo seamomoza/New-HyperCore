@@ -1,9 +1,8 @@
-package io.github.seamo.hyperCore;
+package HyperCore.HyperEntity.EnderMan;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Enderman;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.Interaction;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -12,11 +11,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public class HyperEnderman implements Listener {
+public class HyperEnderMan implements Listener {
     private final JavaPlugin plugin;
     private int bindtime;
 
-    public HyperEnderman(JavaPlugin plugin, FileConfiguration config) {
+    public HyperEnderMan(JavaPlugin plugin, FileConfiguration config) {
         this.plugin = plugin;
         this.bindtime = config.getInt("EnderMan.bind-time");
     }

@@ -1,5 +1,6 @@
-package io.github.seamo.hyperCore;
+package HyperCore.HyperEntity.Skeleton;
 
+import HyperCore.Loader.HyperCoreLoader.HyperCore;
 import org.bukkit.Location;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.configuration.file.FileConfiguration;

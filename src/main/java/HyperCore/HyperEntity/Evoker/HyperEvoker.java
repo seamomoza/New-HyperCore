@@ -1,4 +1,4 @@
-package io.github.seamo.hyperCore;
+package HyperCore.HyperEntity.Evoker;
 
 import org.bukkit.Particle;
 import org.bukkit.Sound;

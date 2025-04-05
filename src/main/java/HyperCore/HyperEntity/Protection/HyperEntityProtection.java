@@ -1,5 +1,5 @@
 
-package io.github.seamo.hyperCore;
+package HyperCore.HyperEntity.Protection;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.EntityType;

@@ -1,7 +1,8 @@
 name: HyperCore
 version: '0'
-main: io.github.seamo.hyperCore.HyperCore
+main: HyperCore.Loader.HyperCoreLoader.HyperCore
 api-version: '1.21'
 commands:
   wb:
     permission: op
+    description: 누구에게 월드보더를 설정하지를 정합니다

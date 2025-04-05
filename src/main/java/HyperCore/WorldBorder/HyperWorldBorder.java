@@ -1,6 +1,5 @@
-package io.github.seamo.hyperCore;
+package HyperCore.WorldBorder;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.WorldBorder;
 import org.bukkit.configuration.file.FileConfiguration;
