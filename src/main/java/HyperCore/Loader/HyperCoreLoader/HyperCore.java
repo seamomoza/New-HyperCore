@@ -9,6 +9,7 @@ import HyperCore.HyperEntity.Skeleton.HyperSkeleton;
 import HyperCore.HyperEntity.Slime.HyperSlime;
 import HyperCore.HyperEntity.Zombie.HyperZombie;
 import HyperCore.Loader.WorldBorderLoader.HyperPlayerRespawn;
+import HyperCore.Player.HyperDrop;
 import HyperCore.Weather.HyperWeather;
 import HyperCore.WorldBorder.HyperWorldBorder;
 import HyperCore.WorldBorder.HyperWorldBorderCommand;
@@ -31,6 +32,9 @@ public class HyperCore extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new HyperGolem(this), this);
         Bukkit.getPluginManager().registerEvents(new HyperEnderMan(this), this);
         Bukkit.getPluginManager().registerEvents(new HyperEvoker(this), this);
+        Bukkit.getPluginManager().registerEvents(new HyperDrop(this), this);
+
+
         HyperWorldBorder worldBorder = new HyperWorldBorder(this);
         worldBorder.startBorderMovement();
         getCommand("wb").setExecutor(new HyperWorldBorderCommand(worldBorder));

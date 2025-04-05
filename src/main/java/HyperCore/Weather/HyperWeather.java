@@ -86,8 +86,10 @@ public class HyperWeather implements Listener {
                 }
 
                 for (Player player : world.getPlayers()) {
-                    if (world.isThundering()) {
-                        world.strikeLightning(player.getLocation());
+                    if (isExposedToSky(player)) {
+                        if (world.isThundering()) {
+                            world.strikeLightning(player.getLocation());
+                        }
                     }
                 }
             }

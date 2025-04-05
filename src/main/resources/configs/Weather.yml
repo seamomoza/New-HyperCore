@@ -5,4 +5,4 @@ damage-count: 0.1
 damage-noDamageTicks: 0
 damage-TickRate: 1
 #천둥치는날 천둥이 치는 간격
-Thunder-TickRate: 20
+Thunder-TickRate: 10
