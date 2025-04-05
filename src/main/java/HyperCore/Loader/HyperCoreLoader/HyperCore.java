@@ -19,7 +19,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class HyperCore extends JavaPlugin {
     @Override
     public void onEnable() {
-        saveDefaultConfig();
         FileConfiguration config = getConfig();
 
         Bukkit.getPluginManager().registerEvents(new HyperEntityProtection(config), this);
