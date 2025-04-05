@@ -1,0 +1,4 @@
+#공격력과 체력 그리고 크기
+attri-damage: 10
+attri-health: 100
+attri-size: 5.0
