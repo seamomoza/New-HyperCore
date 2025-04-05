@@ -23,7 +23,7 @@ public class HyperCore extends JavaPlugin {
 
         Bukkit.getPluginManager().registerEvents(new HyperEntityProtection(config), this);
         Bukkit.getPluginManager().registerEvents(new HyperCreeper(config), this);
-        Bukkit.getPluginManager().registerEvents(new HyperSkeleton(this,config), this);
+        Bukkit.getPluginManager().registerEvents(new HyperSkeleton(this, config), this);
         Bukkit.getPluginManager().registerEvents(new HyperZombie(config), this);
         Bukkit.getPluginManager().registerEvents(new HyperWeather(this, config), this);
         Bukkit.getPluginManager().registerEvents(new HyperPlayerRespawn(this), this);

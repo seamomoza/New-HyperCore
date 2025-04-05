@@ -1,0 +1,8 @@
+#번개 치는 확률
+lightning-chance: 0.0001
+#비오는날 공격 입는 간격과 공격력
+damage-count: 0.1
+damage-noDamageTicks: 0
+damage-TickRate: 1
+#천둥치는날 천둥이 치는 간격
+Thunder-TickRate: 20

@@ -1,0 +1,4 @@
+#화살을 쏘는 간격과 한번에 쏘는 갯수, 그리고 스켈레톤의 체력
+skeleton-arrow-tick: 1
+skeleton-arrow-num: 10
+attri-health: 50

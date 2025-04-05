@@ -1,0 +1,5 @@
+#크리퍼의 폭발 반경과 폭발 하는 간격
+explosion-radius-per-tick: 0.5
+explosion-point-per-circum: 6.0
+explosion-duration-ticks: 100
+explosion-power: 4.0
