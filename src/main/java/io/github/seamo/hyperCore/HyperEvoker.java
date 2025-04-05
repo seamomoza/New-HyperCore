@@ -14,9 +14,12 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.Random;
+
 public class HyperEvoker implements Listener {
     private int healtime;
     private JavaPlugin plugin;
+    private final Random random = new Random();
 
     public HyperEvoker(JavaPlugin plugin, FileConfiguration config) {
         this.healtime = config.getInt("Evoker.heal-time");
@@ -28,12 +31,16 @@ public class HyperEvoker implements Listener {
     public void onEvoker(EntityDeathEvent event) {
         if (event.getEntityType() == EntityType.EVOKER) {
             Evoker evoker = (Evoker) event.getEntity();
-            event.setCancelled(true);
-            evoker.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, healtime * 20, 250, false, false));
-            evoker.addPotionEffect(new PotionEffect(PotionEffectType.RESISTANCE ,healtime * 20, 1, false, false));
-            evoker.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, healtime * 20, 1, false, false));
-            evoker.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, healtime * 20, 1, false, false));
-            totem(evoker);
+            if (random.nextInt(100) <= 90) {
+
+
+                event.setCancelled(true);
+                evoker.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, healtime * 20, 250, false, false));
+                evoker.addPotionEffect(new PotionEffect(PotionEffectType.RESISTANCE, healtime * 20, 1, false, false));
+                evoker.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, healtime * 20, 1, false, false));
+                evoker.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, healtime * 20, 1, false, false));
+                totem(evoker);
+            }
         }
     }
     public void totem(Evoker evoker) {
